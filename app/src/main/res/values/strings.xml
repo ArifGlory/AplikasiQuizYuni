@@ -1,4 +1,12 @@
 <resources>
     <string name="app_name">Aplikasi Quiz Yuni</string>
     <string name="app_slogan">Belajar jadi mudah</string>
+    <string name="text_profil1">Allow me to introduce my self,  my full name is Yuni Asmara . just call me Yuni. \n\n
+I was born in Gunung Sugih 20 june 2000, i live in Gunung Sugih  Lampung Tengah.</string>
+    <string name="text_profil2">
+I study at Muhammadiyah University of Metro, Faculty of teacher training and education, \n
+ english education study program. </string>
+    <string name="text_profil3">Guys, here in the application that I developed,
+        you can learn about procedure text material with questions in the form of audio to practice listening skills, \n
+        the application developed is expected to help to practice listening skills in an enjoy and happy way. Have a good study!!\n</string>
 </resources>
