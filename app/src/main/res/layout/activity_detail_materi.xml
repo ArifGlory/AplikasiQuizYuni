@@ -6,8 +6,36 @@
     android:layout_height="match_parent"
     tools:context=".activity.DetailMateriActivity">
 
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:id="@+id/rvToolbar"
+        android:layout_height="wrap_content">
+
+        <androidx.appcompat.widget.Toolbar
+            android:id="@+id/toolbar"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="?attr/colorPrimary"
+            android:minHeight="?attr/actionBarSize"
+            app:popupTheme="@style/ThemeOverlay.AppCompat.Light"
+            app:theme="@style/ThemeOverlay.AppCompat.Dark.ActionBar" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerVertical="true"
+            android:layout_marginLeft="15dp"
+            android:layout_marginTop="8dp"
+            android:text="Learning Material"
+            android:textColor="@color/white"
+            android:textSize="15sp"
+            android:textStyle="bold" />
+
+    </RelativeLayout>
+
     <com.github.barteksc.pdfviewer.PDFView
         android:id="@+id/pdfView"
+        android:layout_below="@+id/rvToolbar"
         android:layout_width="match_parent"
         android:layout_height="match_parent"/>
 
