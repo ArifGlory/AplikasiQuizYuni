@@ -5,8 +5,6 @@ import android.app.Dialog
 import android.content.DialogInterface
 import android.content.Intent
 import android.content.res.AssetManager
-import android.content.res.Resources
-import android.graphics.drawable.Drawable
 import android.media.AudioManager
 import android.media.MediaPlayer
 import androidx.appcompat.app.AppCompatActivity
@@ -26,18 +24,18 @@ import com.tapisdev.lokamotor.base.BaseActivity
 import com.tapisdev.mediapembelajaranyuni.MainActivity
 import com.tapisdev.mediapembelajaranyuni.R
 import com.tapisdev.mediapembelajaranyuni.model.Level1
+import com.tapisdev.mediapembelajaranyuni.model.Level3
 import com.tapisdev.mediapembelajaranyuni.utility.DBAdapter
 import com.tapisdev.myapplication.model.SharedVariable
-import kotlinx.serialization.json.Json.Default.context
 import java.util.ArrayList
 
-class Level1Activity : BaseActivity() {
+class Level3Activity : BaseActivity() {
 
     var mDB: DBAdapter? = null
-    var listSoal : ArrayList<Level1> = ArrayList<Level1>()
-    var listSoalTemp : ArrayList<Level1> = ArrayList<Level1>()
+    var listSoal : ArrayList<Level3> = ArrayList<Level3>()
+    var listSoalTemp : ArrayList<Level3> = ArrayList<Level3>()
 
-    var TAG_LEVEL1 = "seksi_level1"
+    var TAG_LEVEL3 = "seksi_level3"
     var TAG_CHECK_ANSWER = "cekAnswer"
     var TAG_CHECK_AUDIO = "cekAudio"
     var textInfoAudio = ""
@@ -53,42 +51,26 @@ class Level1Activity : BaseActivity() {
 
     lateinit var tvInfoSoal : TextView
     lateinit var imgPlay : ImageView
-
-    lateinit var btnJwbA : CardView
-    lateinit var btnJwbB : CardView
-    lateinit var btnJwbC : CardView
-    lateinit var btnJwbD : CardView
+    lateinit var btnTrue : Button
+    lateinit var btnFalse : Button
     lateinit var progress_bar : ProgressBar
-
-    lateinit var ivButtonA : ImageView
-    lateinit var ivButtonB : ImageView
-    lateinit var ivButtonC : ImageView
-    lateinit var ivButtonD : ImageView
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_level1)
+        setContentView(R.layout.activity_level3)
 
         setView()
 
         mDB = DBAdapter.getInstance(this)
-        listSoal = mDB!!.getSoalLevel1()
-        listSoalTemp = mDB!!.getSoalLevel1()
+        listSoal = mDB!!.getSoalLevel3()
+        listSoalTemp = mDB!!.getSoalLevel3()
 
-        btnJwbA.setOnClickListener {
-            getAnswer = "A"
+        btnTrue.setOnClickListener {
+            getAnswer = "T"
             nextSoal()
         }
-        btnJwbB.setOnClickListener {
-            getAnswer = "B"
-            nextSoal()
-        }
-        btnJwbC.setOnClickListener {
-            getAnswer = "C"
-            nextSoal()
-        }
-        btnJwbD.setOnClickListener {
-            getAnswer = "D"
+        btnFalse.setOnClickListener {
+            getAnswer = "F"
             nextSoal()
         }
         imgPlay.setOnClickListener {
@@ -129,6 +111,8 @@ class Level1Activity : BaseActivity() {
         animation_view_audio.playAnimation()
         animation_view_audio.loop(true)
 
+        Log.d(TAG_LEVEL3," "+listSoal.get(currentSoal))
+
         tvInfoAudio.setText(textInfoAudio)
         btnEndAudio.setOnClickListener {
             mPlayer.stop()
@@ -149,21 +133,21 @@ class Level1Activity : BaseActivity() {
     fun setupSoal(){
 
         enableAllButton()
-        tvInfoSoal.setText("Soal ke - "+currentSoal)
 
         /*btnJwbA.setText("A. "+listSoal.get(currentSoal).jawaban_a)
         btnJwbB.setText("B. "+listSoal.get(currentSoal).jawaban_b)
         btnJwbC.setText("C. "+listSoal.get(currentSoal).jawaban_c)
         btnJwbD.setText("D. "+listSoal.get(currentSoal).jawaban_d)*/
-        Log.d(TAG_LEVEL1,"curr soal : "+currentSoal)
-        Log.d(TAG_LEVEL1,"gambar a : "+listSoal.get(currentSoal).jawaban_a)
-        Log.d(TAG_LEVEL1,"res gambar a : "+getResourceGambar(listSoal.get(currentSoal).jawaban_a))
+        Log.d(TAG_LEVEL3,"curr soal : "+currentSoal)
 
         if (!listSoal.get(currentSoal).status.equals("info")){
-            ivButtonA.setImageResource(getResourceGambar(listSoal.get(currentSoal).jawaban_a))
-            ivButtonB.setImageResource(getResourceGambar(listSoal.get(currentSoal).jawaban_b))
-            ivButtonC.setImageResource(getResourceGambar(listSoal.get(currentSoal).jawaban_c))
-            ivButtonD.setImageResource(getResourceGambar(listSoal.get(currentSoal).jawaban_d))
+            tvInfoSoal.setText("Soal ke - "+listSoal.get(currentSoal).nomor_soal)
+            btnTrue.setText(" True ")
+            btnFalse.setText(" False ")
+        }else{
+            disableAllButton()
+            btnTrue.setText(" - ")
+            btnFalse.setText(" - ")
         }
 
     }
@@ -183,8 +167,8 @@ class Level1Activity : BaseActivity() {
     }
 
     fun checkNextOrFinish(){
-        //jika sudah mencapai 6 record soal
-        if (countNextSoal < 6){
+        //jika sudah mencapai 12 record soal
+        if (countNextSoal < 12){
             /*var activeSoal = currentSoal
             if (activeSoal % 5 == 0){
                 showDialogAudio()
@@ -199,22 +183,13 @@ class Level1Activity : BaseActivity() {
             disableAllButton()
 
             var skorUser = ""+totalSkor
-            SharedVariable.activeSkorLevel1 = SharedVariable.nilaiJawabBenarLevel1 * totalSkor
+            SharedVariable.activeSkorLevel3 = SharedVariable.nilaiJawabBenarLevel3 * totalSkor
             //showSuccessMessage("Tes Mendengarkan Selesai !, jawaban benar : "+skorUser)
-            Log.d(TAG_LEVEL1,"Tes level 1 Selesai !, hasil skor : "+SharedVariable.activeSkorLevel1)
+            Log.d(TAG_LEVEL3,"Tes level 1 Selesai !, hasil skor : "+SharedVariable.activeSkorLevel3)
             val i = Intent(this,ResultActivity::class.java)
-            i.putExtra("fromLevel","level1")
+            i.putExtra("fromLevel","level3")
             startActivity(i)
         }
-    }
-
-    fun getResourceGambar(nama_gambar : String): Int {
-        var namanya_aja = nama_gambar.substringBefore(".")
-
-        val resources: Resources = getResources()
-        var resourceId = resources.getIdentifier(namanya_aja,"drawable",packageName)
-
-        return  resourceId
     }
 
     fun setupAudio(){
@@ -248,29 +223,19 @@ class Level1Activity : BaseActivity() {
     fun setView(){
         tvInfoSoal = findViewById(R.id.tvInfoSoal)
         imgPlay = findViewById(R.id.imgPlay)
-        btnJwbA = findViewById(R.id.btnJwbA)
-        btnJwbB = findViewById(R.id.btnJwbB)
-        btnJwbC = findViewById(R.id.btnJwbC)
-        btnJwbD = findViewById(R.id.btnJwbD)
-        ivButtonA = findViewById(R.id.ivButtonA)
-        ivButtonB = findViewById(R.id.ivButtonB)
-        ivButtonC = findViewById(R.id.ivButtonC)
-        ivButtonD = findViewById(R.id.ivButtonD)
+        btnTrue = findViewById(R.id.btnTrue)
+        btnFalse = findViewById(R.id.btnFalse)
         progress_bar = findViewById(R.id.progress_bar)
     }
 
     fun disableAllButton(){
-        btnJwbA.isEnabled = false
-        btnJwbB.isEnabled = false
-        btnJwbC.isEnabled = false
-        btnJwbD.isEnabled = false
+        btnTrue.isEnabled = false
+        btnFalse.isEnabled = false
     }
 
     fun enableAllButton(){
-        btnJwbA.isEnabled = true
-        btnJwbB.isEnabled = true
-        btnJwbC.isEnabled = true
-        btnJwbD.isEnabled = true
+        btnTrue.isEnabled = true
+        btnFalse.isEnabled = true
     }
 
     override fun onBackPressed() {
@@ -298,3 +263,4 @@ class Level1Activity : BaseActivity() {
         builder.show()
     }
 }
+

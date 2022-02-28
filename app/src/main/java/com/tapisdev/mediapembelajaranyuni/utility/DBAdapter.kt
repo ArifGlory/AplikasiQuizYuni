@@ -6,6 +6,7 @@ import android.content.ContentValues
 import android.content.Context
 import android.util.Log
 import com.tapisdev.mediapembelajaranyuni.model.Level1
+import com.tapisdev.mediapembelajaranyuni.model.Level3
 import java.lang.Exception
 import java.util.ArrayList
 
@@ -20,6 +21,7 @@ class DBAdapter
  */
 private constructor(context: Context) : SQLiteAssetHelper(context, DB_NAME, null, DB_VER) {
     var listSoalLevel1 : ArrayList<Level1> = ArrayList<Level1>()
+    var listSoalLevel3 : ArrayList<Level3> = ArrayList<Level3>()
 
 
     fun ambilDB(): SQLiteDatabase? {
@@ -46,7 +48,7 @@ private constructor(context: Context) : SQLiteAssetHelper(context, DB_NAME, null
         }
     }
 
-    //method untuk mengambil semua data soal seksi mendengarkan
+    //method untuk mengambil semua data soal level 1
     fun getSoalLevel1(): ArrayList<Level1> {
         //var listSoal : ArrayList<SeksiMendengarkan> = ArrayList<SeksiMendengarkan>()
         var tabel_soal: String? = "tb_level_1"
@@ -80,6 +82,36 @@ private constructor(context: Context) : SQLiteAssetHelper(context, DB_NAME, null
             } while (cursor.moveToNext())
         }
         return listSoalLevel1
+    }
+
+    //method untuk mengambil semua data soal level 3
+    fun getSoalLevel3(): ArrayList<Level3> {
+        //var listSoal : ArrayList<SeksiMendengarkan> = ArrayList<SeksiMendengarkan>()
+        var tabel_soal: String? = "tb_level_3"
+        listSoalLevel3.clear()
+
+        val cursor = db!!.query(
+            tabel_soal, arrayOf(
+                "id",
+                "soal",
+                "jawaban_benar",
+                "status",
+                "nomor_soal"
+            ), null, null, null, null, null
+        )
+        if (cursor.moveToFirst()) {
+            do {
+                var quiz  : Level3 = Level3(
+                    cursor.getInt(cursor.getColumnIndexOrThrow("id")),
+                    cursor.getString(cursor.getColumnIndexOrThrow("soal")),
+                    cursor.getString(cursor.getColumnIndexOrThrow("jawaban_benar")),
+                    cursor.getString(cursor.getColumnIndexOrThrow("status")),
+                    cursor.getString(cursor.getColumnIndexOrThrow("nomor_soal"))
+                )
+                listSoalLevel3.add(quiz)
+            } while (cursor.moveToNext())
+        }
+        return listSoalLevel3
     }
 
 
@@ -132,7 +164,7 @@ private constructor(context: Context) : SQLiteAssetHelper(context, DB_NAME, null
     }
 
     companion object {
-        private const val DB_NAME = "db_yuni_quiz"
+        private const val DB_NAME = "db_yuni_quiz_2"
         private const val DB_VER = 1
         const val TABLE_LEVEL1 = "tb_level_1"
         const val TABLE_HISTORY = "tb_history"

@@ -15,9 +15,17 @@
         android:theme="@style/Theme.MediaPembelajaranYuni"
         tools:replace="android:icon">
         <activity
-            android:name=".activity.Level1Activity"
+            android:name=".activity.Level3Activity"
             android:theme="@style/Theme.MaterialComponents.NoActionBar"
             android:exported="true" />
+        <activity
+            android:name=".activity.ResultActivity"
+            android:exported="true"
+            android:theme="@style/Theme.MaterialComponents.NoActionBar" />
+        <activity
+            android:name=".activity.Level1Activity"
+            android:exported="true"
+            android:theme="@style/Theme.MaterialComponents.NoActionBar" />
         <activity
             android:name=".activity.QuizActivity"
             android:exported="true"

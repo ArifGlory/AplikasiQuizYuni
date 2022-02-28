@@ -15,6 +15,7 @@ class MainActivity : AppCompatActivity() {
     lateinit var lineLevel : LinearLayout
     lateinit var lineProfil : LinearLayout
     lateinit var lineMateri : LinearLayout
+    lateinit var lineExit : LinearLayout
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -23,6 +24,7 @@ class MainActivity : AppCompatActivity() {
         lineLevel = findViewById(R.id.lineLevel)
         lineProfil = findViewById(R.id.lineProfil)
         lineMateri = findViewById(R.id.lineMateri)
+        lineExit = findViewById(R.id.lineExit)
 
 
         lineLevel.setOnClickListener {
@@ -37,6 +39,9 @@ class MainActivity : AppCompatActivity() {
             val i = Intent(this,DetailMateriActivity::class.java)
             i.putExtra("file_name","learning_material.pdf")
             startActivity(i)
+        }
+        lineExit.setOnClickListener {
+            finishAffinity()
         }
 
 

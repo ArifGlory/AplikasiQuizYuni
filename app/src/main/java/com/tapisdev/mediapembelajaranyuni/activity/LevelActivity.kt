@@ -4,21 +4,28 @@ import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.widget.RelativeLayout
+import androidx.cardview.widget.CardView
 import com.tapisdev.lokamotor.base.BaseActivity
 import com.tapisdev.mediapembelajaranyuni.R
 
 class LevelActivity : AppCompatActivity() {
 
     lateinit var rlLevelElementary : RelativeLayout
+    lateinit var cardlistIntermediate : CardView
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_level)
 
         rlLevelElementary = findViewById(R.id.rlLevelElementary)
+        cardlistIntermediate = findViewById(R.id.cardlistIntermediate)
 
         rlLevelElementary.setOnClickListener {
             val i = Intent(this,Level1Activity::class.java)
+            startActivity(i)
+        }
+        cardlistIntermediate.setOnClickListener {
+            val i = Intent(this,Level3Activity::class.java)
             startActivity(i)
         }
     }
