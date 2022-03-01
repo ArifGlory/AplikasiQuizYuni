@@ -17,10 +17,26 @@ class SplashActivity : BaseActivity() {
 
     lateinit var btnStart : Button
     var mPlayer : MediaPlayer = MediaPlayer()
+    var TAG_dETAIL = "fbSplash"
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_splash)
+
+        settingsRef.document("maintenance").get().addOnCompleteListener {
+                task ->
+            if(task.isSuccessful){
+                var mode = task.result?.get("mode")
+                if (mode != null) {
+                    Log.d(TAG_dETAIL,"mode : "+mode)
+                    if (mode.equals("1")){
+                        val i = Intent(applicationContext,MaintenanceActivity::class.java)
+                        startActivity(i)
+                        finish()
+                    }
+                }
+            }
+        }
 
         btnStart = findViewById(R.id.btnStart)
         btnStart.setOnClickListener {

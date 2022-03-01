@@ -5,6 +5,7 @@
 
     <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
     <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
+    <uses-permission android:name="android.permission.INTERNET" />
 
     <application
         android:allowBackup="true"
@@ -15,9 +16,13 @@
         android:theme="@style/Theme.MediaPembelajaranYuni"
         tools:replace="android:icon">
         <activity
-            android:name=".activity.Level2Activity"
+            android:name=".activity.MaintenanceActivity"
             android:theme="@style/Theme.MaterialComponents.NoActionBar"
             android:exported="true" />
+        <activity
+            android:name=".activity.Level2Activity"
+            android:exported="true"
+            android:theme="@style/Theme.MaterialComponents.NoActionBar" />
         <activity
             android:name=".activity.Level4Activity"
             android:exported="true"

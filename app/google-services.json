@@ -1,0 +1,47 @@
+{
+  "project_info": {
+    "project_number": "602924958104",
+    "project_id": "listeningpractice-5c577",
+    "storage_bucket": "listeningpractice-5c577.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:602924958104:android:6da3346c58f0d1a001ebed",
+        "android_client_info": {
+          "package_name": "com.tapisdev.mediapembelajaranyuni"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "602924958104-t49tnk5hf1cuahhlvn0hvinujjceqkhj.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.tapisdev.mediapembelajaranyuni",
+            "certificate_hash": "10a6740e6a410954f4d3983063fd02a71175ae62"
+          }
+        },
+        {
+          "client_id": "602924958104-l337i1e80h1jp72nocfk65esdomso4ik.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCiXwAau2hYv5lFoPqhXRkrPLQr1X_AaBU"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "602924958104-l337i1e80h1jp72nocfk65esdomso4ik.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
