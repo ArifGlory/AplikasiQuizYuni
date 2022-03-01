@@ -12,6 +12,7 @@ class LevelActivity : AppCompatActivity() {
 
     lateinit var rlLevelElementary : RelativeLayout
     lateinit var cardlistIntermediate : CardView
+    lateinit var cardlistAdvance : CardView
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -19,6 +20,7 @@ class LevelActivity : AppCompatActivity() {
 
         rlLevelElementary = findViewById(R.id.rlLevelElementary)
         cardlistIntermediate = findViewById(R.id.cardlistIntermediate)
+        cardlistAdvance = findViewById(R.id.cardlistAdvance)
 
         rlLevelElementary.setOnClickListener {
             val i = Intent(this,Level1Activity::class.java)
@@ -26,6 +28,10 @@ class LevelActivity : AppCompatActivity() {
         }
         cardlistIntermediate.setOnClickListener {
             val i = Intent(this,Level3Activity::class.java)
+            startActivity(i)
+        }
+        cardlistAdvance.setOnClickListener {
+            val i = Intent(this,Level4Activity::class.java)
             startActivity(i)
         }
     }
