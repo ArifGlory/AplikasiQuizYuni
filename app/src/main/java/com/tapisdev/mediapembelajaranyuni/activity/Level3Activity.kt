@@ -175,7 +175,7 @@ class Level3Activity : BaseActivity() {
         Log.d(TAG_LEVEL3,"curr soal : "+currentSoal)
 
         if (!listSoal.get(currentSoal).status.equals("info")){
-            tvInfoSoal.setText("Soal ke - "+listSoal.get(currentSoal).nomor_soal)
+            tvInfoSoal.setText("Question Number - "+listSoal.get(currentSoal).nomor_soal)
             btnTrue.setText(" True ")
             btnFalse.setText(" False ")
         }else{
@@ -282,7 +282,7 @@ class Level3Activity : BaseActivity() {
     override fun onBackPressed() {
         val builder =
             AlertDialog.Builder(this)
-        builder.setMessage("Apakah anda ingin keluar dari Tes yang sedang berlangsung ?")
+        builder.setMessage("Do you want to exit the ongoing Test ?")
         builder.setCancelable(false)
 
         listener = DialogInterface.OnClickListener { dialog, which ->

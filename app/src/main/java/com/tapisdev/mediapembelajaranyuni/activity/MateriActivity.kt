@@ -1,6 +1,9 @@
 package com.tapisdev.mediapembelajaranyuni.activity
 
 import android.content.Intent
+import android.content.res.AssetManager
+import android.media.AudioManager
+import android.media.MediaPlayer
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.widget.RelativeLayout
@@ -11,6 +14,7 @@ class MateriActivity : AppCompatActivity() {
 
     lateinit var rlLevel1 : RelativeLayout
     lateinit var rlLevel2 : RelativeLayout
+
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -30,4 +34,5 @@ class MateriActivity : AppCompatActivity() {
             startActivity(i)
         }
     }
+
 }

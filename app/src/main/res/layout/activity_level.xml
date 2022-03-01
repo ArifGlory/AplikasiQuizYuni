@@ -272,7 +272,7 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_centerInParent="true"
-                        android:text="Advance"
+                        android:text="Advanced"
                         android:textColor="#FFFF"
                         android:textSize="18sp"
                         android:textStyle="bold" />

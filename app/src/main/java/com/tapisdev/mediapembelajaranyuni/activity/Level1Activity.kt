@@ -183,7 +183,7 @@ class Level1Activity : BaseActivity() {
     fun setupSoal(){
 
         enableAllButton()
-        tvInfoSoal.setText("Soal ke - "+currentSoal)
+        tvInfoSoal.setText("Question number - "+currentSoal)
 
         /*btnJwbA.setText("A. "+listSoal.get(currentSoal).jawaban_a)
         btnJwbB.setText("B. "+listSoal.get(currentSoal).jawaban_b)
@@ -310,7 +310,7 @@ class Level1Activity : BaseActivity() {
     override fun onBackPressed() {
         val builder =
             AlertDialog.Builder(this)
-        builder.setMessage("Apakah anda ingin keluar dari Tes yang sedang berlangsung ?")
+        builder.setMessage("Do you want to exit the ongoing Test ?")
         builder.setCancelable(false)
 
         listener = DialogInterface.OnClickListener { dialog, which ->
