@@ -9,8 +9,10 @@ import android.content.res.Resources
 import android.graphics.drawable.Drawable
 import android.media.AudioManager
 import android.media.MediaPlayer
+import android.os.Build
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.text.Html
 import android.util.Log
 import android.view.View
 import android.view.Window
@@ -19,6 +21,7 @@ import android.widget.Button
 import android.widget.ImageView
 import android.widget.ProgressBar
 import android.widget.TextView
+import androidx.annotation.RequiresApi
 import androidx.appcompat.app.AlertDialog
 import androidx.cardview.widget.CardView
 import com.airbnb.lottie.LottieAnimationView
@@ -65,6 +68,7 @@ class Level1Activity : BaseActivity() {
     lateinit var ivButtonC : ImageView
     lateinit var ivButtonD : ImageView
 
+    @RequiresApi(Build.VERSION_CODES.N)
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_level1)
@@ -99,9 +103,10 @@ class Level1Activity : BaseActivity() {
         startQuiz()
     }
 
+    @RequiresApi(Build.VERSION_CODES.N)
     fun startQuiz(){
         setupProgressBarAnimation()
-        showDialogAudio()
+        showDialogTeksSoal()
     }
 
     fun setupProgressBarAnimation(){
@@ -130,6 +135,35 @@ class Level1Activity : BaseActivity() {
         animation_view_audio.loop(true)
 
         tvInfoAudio.setText(textInfoAudio)
+        btnEndAudio.setOnClickListener {
+            mPlayer.stop()
+            mPlayer.reset()
+            dialog.dismiss()
+
+            if (listSoal.get(currentSoal).status.equals("info")){
+                currentSoal++
+                countNextSoal++
+                setupSoal()
+            }
+
+        }
+
+        dialog.show()
+    }
+
+    @RequiresApi(Build.VERSION_CODES.N)
+    fun showDialogTeksSoal(){
+        val dialog = Dialog(this)
+        dialog.requestWindowFeature(Window.FEATURE_NO_TITLE)
+        dialog.setCancelable(false)
+        dialog.setContentView(R.layout.dialog_teks_soal)
+
+        var btnEndAudio = dialog.findViewById(R.id.btnEndAudio) as Button
+        var tvTeksSoal = dialog.findViewById(R.id.tvTeksSoal) as TextView
+
+        setupAudio()
+
+        tvTeksSoal.setText(Html.fromHtml(listSoal.get(currentSoal).teks_soal,Html.FROM_HTML_MODE_COMPACT))
         btnEndAudio.setOnClickListener {
             mPlayer.stop()
             mPlayer.reset()
