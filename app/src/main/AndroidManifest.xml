@@ -15,6 +15,9 @@
         android:theme="@style/Theme.MediaPembelajaranYuni"
         tools:replace="android:icon">
         <activity
+            android:name=".activity.SplashActivity"
+            android:exported="true" />
+        <activity
             android:name=".activity.LandingLevel1Activity"
             android:exported="true" />
         <activity
