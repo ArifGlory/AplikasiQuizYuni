@@ -15,9 +15,13 @@
         android:theme="@style/Theme.MediaPembelajaranYuni"
         tools:replace="android:icon">
         <activity
-            android:name=".activity.Level4Activity"
+            android:name=".activity.Level2Activity"
             android:theme="@style/Theme.MaterialComponents.NoActionBar"
             android:exported="true" />
+        <activity
+            android:name=".activity.Level4Activity"
+            android:exported="true"
+            android:theme="@style/Theme.MaterialComponents.NoActionBar" />
         <activity
             android:name=".activity.SplashActivity"
             android:exported="true"
@@ -67,7 +71,7 @@
         <activity
             android:name=".MainActivity"
             android:exported="true"
-            android:theme="@style/Theme.MaterialComponents.NoActionBar"></activity>
+            android:theme="@style/Theme.MaterialComponents.NoActionBar" />
     </application>
 
 </manifest>

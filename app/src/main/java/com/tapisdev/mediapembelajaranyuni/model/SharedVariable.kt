@@ -5,6 +5,7 @@ class SharedVariable {
 
     companion object {
         val nilaiJawabBenarLevel1 = 20.0
+        val nilaiJawabBenarLevel2 = 10.0
         val nilaiJawabBenarLevel3 = 10.0
         val nilaiJawabBenarLevel4 = 10.0
         var activeSkorLevel1 = 0.0
