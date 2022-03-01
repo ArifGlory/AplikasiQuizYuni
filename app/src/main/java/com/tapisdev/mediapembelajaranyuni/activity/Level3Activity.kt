@@ -7,8 +7,10 @@ import android.content.Intent
 import android.content.res.AssetManager
 import android.media.AudioManager
 import android.media.MediaPlayer
+import android.os.Build
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.text.Html
 import android.util.Log
 import android.view.View
 import android.view.Window
@@ -17,6 +19,7 @@ import android.widget.Button
 import android.widget.ImageView
 import android.widget.ProgressBar
 import android.widget.TextView
+import androidx.annotation.RequiresApi
 import androidx.appcompat.app.AlertDialog
 import androidx.cardview.widget.CardView
 import com.airbnb.lottie.LottieAnimationView
@@ -55,6 +58,7 @@ class Level3Activity : BaseActivity() {
     lateinit var btnFalse : Button
     lateinit var progress_bar : ProgressBar
 
+    @RequiresApi(Build.VERSION_CODES.N)
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_level3)
@@ -81,9 +85,10 @@ class Level3Activity : BaseActivity() {
         startQuiz()
     }
 
+    @RequiresApi(Build.VERSION_CODES.N)
     fun startQuiz(){
         setupProgressBarAnimation()
-        showDialogAudio()
+        showDialogTeksSoal()
     }
 
     fun setupProgressBarAnimation(){
@@ -130,6 +135,35 @@ class Level3Activity : BaseActivity() {
         dialog.show()
     }
 
+    @RequiresApi(Build.VERSION_CODES.N)
+    fun showDialogTeksSoal(){
+        val dialog = Dialog(this)
+        dialog.requestWindowFeature(Window.FEATURE_NO_TITLE)
+        dialog.setCancelable(false)
+        dialog.setContentView(R.layout.dialog_teks_soal)
+
+        var btnEndAudio = dialog.findViewById(R.id.btnEndAudio) as Button
+        var tvTeksSoal = dialog.findViewById(R.id.tvTeksSoal) as TextView
+
+        setupAudio()
+
+        tvTeksSoal.setText(Html.fromHtml(listSoal.get(currentSoal).teks_soal, Html.FROM_HTML_MODE_COMPACT))
+        btnEndAudio.setOnClickListener {
+            mPlayer.stop()
+            mPlayer.reset()
+            dialog.dismiss()
+
+            if (listSoal.get(currentSoal).status.equals("info")){
+                currentSoal++
+                countNextSoal++
+                setupSoal()
+            }
+
+        }
+
+        dialog.show()
+    }
+
     fun setupSoal(){
 
         enableAllButton()
@@ -152,6 +186,7 @@ class Level3Activity : BaseActivity() {
 
     }
 
+    @RequiresApi(Build.VERSION_CODES.N)
     fun nextSoal(){
         Log.d(TAG_CHECK_ANSWER," Soal : "+listSoal.get(currentSoal).soal)
         Log.d(TAG_CHECK_ANSWER," getAnswer : "+getAnswer)
@@ -166,6 +201,7 @@ class Level3Activity : BaseActivity() {
         checkNextOrFinish()
     }
 
+    @RequiresApi(Build.VERSION_CODES.N)
     fun checkNextOrFinish(){
         //jika sudah mencapai 12 record soal
         if (countNextSoal < 12){
@@ -176,7 +212,12 @@ class Level3Activity : BaseActivity() {
                 setupSoal()
             }*/
             setupSoal()
-            showDialogAudio()
+            if (listSoal.get(currentSoal).status.equals("info")){
+                showDialogTeksSoal()
+            }else{
+                showDialogAudio()
+            }
+
 
         }else{
             mAnimation.end()

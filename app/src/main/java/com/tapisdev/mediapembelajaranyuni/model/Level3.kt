@@ -11,5 +11,6 @@ data class Level3(
     var soal : String = "",
     var jawaban_benar : String = "",
     var status : String = "",
-    var nomor_soal : String = ""
+    var nomor_soal : String = "",
+    var teks_soal : String = ""
 ) : Parcelable

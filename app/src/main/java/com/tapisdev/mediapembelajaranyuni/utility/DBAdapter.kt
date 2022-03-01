@@ -98,7 +98,8 @@ private constructor(context: Context) : SQLiteAssetHelper(context, DB_NAME, null
                 "soal",
                 "jawaban_benar",
                 "status",
-                "nomor_soal"
+                "nomor_soal",
+                "teks_soal"
             ), null, null, null, null, null
         )
         if (cursor.moveToFirst()) {
@@ -108,7 +109,8 @@ private constructor(context: Context) : SQLiteAssetHelper(context, DB_NAME, null
                     cursor.getString(cursor.getColumnIndexOrThrow("soal")),
                     cursor.getString(cursor.getColumnIndexOrThrow("jawaban_benar")),
                     cursor.getString(cursor.getColumnIndexOrThrow("status")),
-                    cursor.getString(cursor.getColumnIndexOrThrow("nomor_soal"))
+                    cursor.getString(cursor.getColumnIndexOrThrow("nomor_soal")),
+                    cursor.getString(cursor.getColumnIndexOrThrow("teks_soal"))
                 )
                 listSoalLevel3.add(quiz)
             } while (cursor.moveToNext())
@@ -166,7 +168,7 @@ private constructor(context: Context) : SQLiteAssetHelper(context, DB_NAME, null
     }
 
     companion object {
-        private const val DB_NAME = "db_yuni_quiz_3"
+        private const val DB_NAME = "db_yuni_quiz_4"
         private const val DB_VER = 1
         const val TABLE_LEVEL1 = "tb_level_1"
         const val TABLE_HISTORY = "tb_history"
