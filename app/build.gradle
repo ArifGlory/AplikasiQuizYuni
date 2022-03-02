@@ -2,7 +2,6 @@ plugins {
     id 'com.android.application'
     id 'kotlin-android'
     id 'kotlin-parcelize'
-    id 'com.google.gms.google-services'
 }
 
 android {
@@ -64,13 +63,9 @@ dependencies {
     implementation 'br.com.simplepass:loading-button-android:1.14.0'
     //pdf viewer
     implementation 'com.github.barteksc:android-pdf-viewer:2.8.2'
-    //firebases
-    implementation 'com.google.firebase:firebase-firestore:16.0.+'
-    implementation 'com.google.firebase:firebase-core:16.0.+'
-    implementation 'com.google.firebase:firebase-auth:16.0.+'
-    implementation 'com.google.android.gms:play-services-auth:16.0.+'
     //error guava
     implementation 'com.google.guava:guava:27.0.1-android'
+    implementation 'com.google.firebase:firebase-firestore-ktx:24.0.1'
     testImplementation 'junit:junit:4.+'
     androidTestImplementation 'androidx.test.ext:junit:1.1.3'
     androidTestImplementation 'androidx.test.espresso:espresso-core:3.4.0'

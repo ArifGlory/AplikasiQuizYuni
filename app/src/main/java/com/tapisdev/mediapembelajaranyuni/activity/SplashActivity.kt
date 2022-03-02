@@ -23,21 +23,6 @@ class SplashActivity : BaseActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_splash)
 
-        settingsRef.document("maintenance").get().addOnCompleteListener {
-                task ->
-            if(task.isSuccessful){
-                var mode = task.result?.get("mode")
-                if (mode != null) {
-                    Log.d(TAG_dETAIL,"mode : "+mode)
-                    if (mode.equals("1")){
-                        val i = Intent(applicationContext,MaintenanceActivity::class.java)
-                        startActivity(i)
-                        finish()
-                    }
-                }
-            }
-        }
-
         btnStart = findViewById(R.id.btnStart)
         btnStart.setOnClickListener {
             mPlayer.stop()

@@ -5,10 +5,7 @@ import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.widget.LinearLayout
 import com.tapisdev.lokamotor.base.BaseActivity
-import com.tapisdev.mediapembelajaranyuni.activity.DetailMateriActivity
-import com.tapisdev.mediapembelajaranyuni.activity.LevelActivity
-import com.tapisdev.mediapembelajaranyuni.activity.MateriActivity
-import com.tapisdev.mediapembelajaranyuni.activity.ProfilActivity
+import com.tapisdev.mediapembelajaranyuni.activity.*
 
 class MainActivity : AppCompatActivity() {
 
@@ -16,6 +13,7 @@ class MainActivity : AppCompatActivity() {
     lateinit var lineProfil : LinearLayout
     lateinit var lineMateri : LinearLayout
     lateinit var lineExit : LinearLayout
+    lateinit var lineProfileUser : LinearLayout
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -25,6 +23,7 @@ class MainActivity : AppCompatActivity() {
         lineProfil = findViewById(R.id.lineProfil)
         lineMateri = findViewById(R.id.lineMateri)
         lineExit = findViewById(R.id.lineExit)
+        lineProfileUser = findViewById(R.id.lineProfileUser)
 
 
         lineLevel.setOnClickListener {
@@ -42,6 +41,10 @@ class MainActivity : AppCompatActivity() {
         }
         lineExit.setOnClickListener {
             finishAffinity()
+        }
+        lineProfileUser.setOnClickListener {
+            val i = Intent(this,UserActivity::class.java)
+            startActivity(i)
         }
 
 

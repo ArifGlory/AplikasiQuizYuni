@@ -6,8 +6,6 @@ import android.view.View
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import cn.pedant.SweetAlert.SweetAlertDialog
-import com.google.firebase.firestore.FirebaseFirestore
-import com.google.firebase.firestore.FirebaseFirestoreSettings
 import com.tapisdev.mediapembelajaranyuni.model.UserPreference
 import es.dmoral.toasty.Toasty
 import java.text.SimpleDateFormat
@@ -24,8 +22,6 @@ open class BaseActivity : AppCompatActivity() {
   //  val userRef = myDB.collection("users")
  //   val settingsRef = myDB.collection("settings")
 
-    val myDB = FirebaseFirestore.getInstance()
-    val settingsRef = myDB.collection("settings")
 
 
     override fun setContentView(view: View?) {
@@ -36,13 +32,6 @@ open class BaseActivity : AppCompatActivity() {
         pDialogLoading.setTitleText("Loading..")
         pDialogLoading.setCancelable(false)
 
-      /*  var settings = FirebaseFirestoreSettings.Builder().setTimestampsInSnapshotsEnabled(true).build()
-        myDB.firestoreSettings = settings*/
-        //val firestore = FirebaseFirestore.getInstance()
-        val settings = FirebaseFirestoreSettings.Builder()
-            .setTimestampsInSnapshotsEnabled(true)
-            .build()
-        myDB.firestoreSettings = settings
 
     }
 
@@ -99,7 +88,7 @@ open class BaseActivity : AppCompatActivity() {
         mUserPref.saveDeskripsi("")
         mUserPref.saveEmail("")
         mUserPref.saveJenisUser("")
-        mUserPref.savePhone("")
+        mUserPref.saveKelas("")
     }
 
     fun convertDate(tanggal : String): String {

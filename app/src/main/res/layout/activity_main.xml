@@ -204,7 +204,7 @@
                                 android:layout_width="match_parent"
                                 android:layout_height="wrap_content"
                                 android:layout_marginTop="5dp"
-                                android:text="Profile"
+                                android:text="Profile Creator"
                                 android:textAlignment="center"
                                 android:textColor="@color/grey_800"
                                 android:textSize="14sp"
@@ -226,8 +226,8 @@
                     <androidx.cardview.widget.CardView
                         android:layout_width="140dp"
                         android:layout_height="140dp"
-                        android:layout_centerHorizontal="true"
                         android:focusable="true"
+                        android:id="@+id/cardExit"
                         android:foreground="?android:attr/selectableItemBackground"
                         card_view:cardBackgroundColor="@color/white"
                         card_view:cardCornerRadius="5dp"
@@ -253,6 +253,47 @@
                                 android:layout_height="wrap_content"
                                 android:layout_marginTop="5dp"
                                 android:text="Exit"
+                                android:textAlignment="center"
+                                android:textColor="@color/grey_800"
+                                android:textSize="14sp"
+                                android:textStyle="bold" />
+
+
+                        </LinearLayout>
+
+                    </androidx.cardview.widget.CardView>
+
+                    <androidx.cardview.widget.CardView
+                        android:layout_width="140dp"
+                        android:layout_height="140dp"
+                        android:layout_centerHorizontal="true"
+                        android:focusable="true"
+                        android:layout_alignParentRight="true"
+                        android:foreground="?android:attr/selectableItemBackground"
+                        card_view:cardBackgroundColor="@color/white"
+                        card_view:cardCornerRadius="5dp"
+                        card_view:cardElevation="4dp"
+                        card_view:cardUseCompatPadding="true">
+
+                        <LinearLayout
+                            android:id="@+id/lineProfileUser"
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent"
+                            android:orientation="vertical"
+                            android:padding="2dp">
+
+                            <ImageView
+                                android:layout_width="50dp"
+                                android:layout_height="50dp"
+                                android:layout_gravity="center_horizontal"
+                                android:layout_marginTop="15dp"
+                                android:src="@drawable/users_many" />
+
+                            <TextView
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:layout_marginTop="5dp"
+                                android:text="User Profile"
                                 android:textAlignment="center"
                                 android:textColor="@color/grey_800"
                                 android:textSize="14sp"

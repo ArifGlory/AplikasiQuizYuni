@@ -7,7 +7,7 @@ class UserPreference(context: Context) {
     private val KEY_JENIS_USER = "jenis_user"
     private val KEY_EMAIL = "email"
     private val KEY_FOTO = "foto"
-    private val KEY_PHONE = "phone"
+    private val KEY_KELAS = "kelas"
     private val KEY_ALAMAT = "alamat"
     private val KEY_LATLON = "latlon"
     private val KEY_DESKRIPSI = "deskripsi"
@@ -40,9 +40,9 @@ class UserPreference(context: Context) {
         editor.commit()
     }
 
-    fun savePhone(text : String){
+    fun saveKelas(text : String){
         val editor = preferences!!.edit()
-        editor.putString(KEY_PHONE,text)
+        editor.putString(KEY_KELAS,text)
         editor.commit()
     }
 
@@ -81,8 +81,8 @@ class UserPreference(context: Context) {
         return preferences!!.getString(KEY_FOTO,null)
     }
 
-    fun getPhone() : String?{
-        return preferences!!.getString(KEY_PHONE,null)
+    fun getKelas() : String?{
+        return preferences!!.getString(KEY_KELAS,null)
     }
 
     fun getAlamat() : String?{

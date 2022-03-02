@@ -22,10 +22,9 @@
                 android:layout_height="wrap_content"
                 android:text="Informasi soal"
                 android:layout_gravity="center_horizontal"
-                android:textStyle="bold"
+                android:textStyle="normal"
                 android:id="@+id/tvTeksSoal"
                 android:textColor="@color/black"
-                android:textAppearance="@style/Base.TextAppearance.AppCompat.Headline"
                 android:layout_marginTop="10dp" />
 
 
