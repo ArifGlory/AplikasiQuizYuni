@@ -171,7 +171,7 @@ class Level2Activity : BaseActivity() {
         dialog.setCancelable(false)
         dialog.setContentView(R.layout.dialog_teks_soal)
 
-        var btnEndAudio = dialog.findViewById(R.id.btnEndAudio) as Button
+            var btnEndAudio = dialog.findViewById(R.id.btnEndAudio) as Button
         var tvTeksSoal = dialog.findViewById(R.id.tvTeksSoal) as TextView
 
         setupAudio()
