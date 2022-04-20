@@ -92,13 +92,17 @@ class MainActivity : AppCompatActivity() {
 
     override fun onResume() {
         super.onResume()
-
+        Log.d("mainact","onresume : ")
         if (mPlayer != null) {
             if (mPlayer.isPlaying()) {
                 mPlayer.stop()
                 mPlayer.reset()
                 setupAudio()
+            }else{
+                setupAudio()
             }
+        }else{
+            setupAudio()
         }
 
     }
